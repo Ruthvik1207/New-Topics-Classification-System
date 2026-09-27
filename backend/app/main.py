@@ -28,13 +28,13 @@ async def lifespan(app: FastAPI):
     init_db()
     logger.info("Pre-loading machine learning model into memory...")
     ModelRegistry.get_instance()
-    logger.info(f"NewsLens AI Backend running on port {settings.API_PORT}")
+    logger.info(f"New Topics Classification System Backend running on port {settings.API_PORT}")
     yield
     # Shutdown
-    logger.info("Shutting down NewsLens AI Backend...")
+    logger.info("Shutting down New Topics Classification System Backend...")
 
 app = FastAPI(
-    title="NewsLens AI API",
+    title="New Topics Classification System API",
     description="Continuous Learning News Topic Classification System with MLOps, MLflow, and Evidently AI",
     version="1.0.0",
     docs_url="/docs",
@@ -42,6 +42,7 @@ app = FastAPI(
     openapi_url="/openapi.json",
     lifespan=lifespan
 )
+
 
 # CORS middleware for React Vite Frontend
 app.add_middleware(

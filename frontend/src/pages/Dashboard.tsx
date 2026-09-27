@@ -67,7 +67,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setCurrentTab }) => {
   }, []);
 
   if (loading) {
-    return <LoadingState message="Synthesizing NewsLens Telemetry..." subMessage="Fetching model metadata, drift diagnostics, and inference records" />;
+    return <LoadingState message="Synthesizing Telemetry..." subMessage="Fetching model metadata, drift diagnostics, and inference records" />;
   }
 
   const f1Score = modelMeta?.metrics?.f1 ? (modelMeta.metrics.f1 * 100).toFixed(1) + '%' : '98.6%';
@@ -92,12 +92,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ setCurrentTab }) => {
               <StatusBadge status={driftStatus === 'Healthy' ? 'Drift: Low' : `Drift: ${driftStatus}`} pulse={driftStatus !== 'Healthy'} />
             </div>
             <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              NewsLens <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">AI</span>
+              New Topics <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Classification System</span>
             </h1>
             <p className="mt-2 text-sm text-slate-300 max-w-2xl leading-relaxed">
               Production NLP platform automatically classifying news streams across 8 topics with DistilBERT and calibrated inference. Continuously retraining upon verified human feedback.
             </p>
           </div>
+
 
           <div className="flex flex-wrap items-center gap-3">
             <GlassButton

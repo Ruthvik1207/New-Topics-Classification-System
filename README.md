@@ -1,13 +1,14 @@
-# NewsLens AI — Continuous Learning News Topic Classification System
+# New Topics Classification System — Continuous Learning NLP Platform
 
-[![CI/CD Pipeline](https://github.com/newslens/newslens-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/newslens/newslens-ai/actions)
+[![CI/CD Pipeline](https://github.com/topics-ai/new-topics-classification-system/actions/workflows/ci.yml/badge.svg)](https://github.com/topics-ai/new-topics-classification-system/actions)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react&logoColor=black)](https://react.dev)
 [![DVC](https://img.shields.io/badge/DVC-Tracked-945DD6?logo=dvc&logoColor=white)](https://dvc.org)
 [![MLflow](https://img.shields.io/badge/MLflow-3.16+-0194E2?logo=mlflow&logoColor=white)](https://mlflow.org)
 [![Evidently AI](https://img.shields.io/badge/Evidently-Monitoring-FF4B4B)](https://evidentlyai.com)
 
-**NewsLens AI** is an enterprise-grade NLP and MLOps system that automatically categorizes news articles into predefined topics and continuously improves as new labeled data and user feedback are ingested. It features an interactive **Liquid Glass UI**, a modular **FastAPI REST API**, experiment tracking with **MLflow**, data versioning with **DVC**, statistical drift monitoring with **Evidently AI**, and automated **GitHub Actions CI/CD**.
+**New Topics Classification System** is an enterprise-grade NLP and MLOps platform that automatically categorizes news articles into predefined topics and continuously improves as new labeled data and user feedback are ingested. It features an interactive **Liquid Glass UI**, a modular **FastAPI REST API**, experiment tracking with **MLflow**, data versioning with **DVC**, statistical drift monitoring with **Evidently AI**, and automated **GitHub Actions CI/CD**.
+
 
 ---
 

@@ -1,6 +1,6 @@
-# NewsLens AI - Service Launcher for Windows PowerShell
+# New Topics Classification System - Service Launcher for Windows PowerShell
 Write-Host "==========================================================" -ForegroundColor Cyan
-Write-Host " NewsLens AI - Continuous Learning NLP System Launcher   " -ForegroundColor Cyan
+Write-Host " New Topics Classification System - Service Launcher      " -ForegroundColor Cyan
 Write-Host "==========================================================" -ForegroundColor Cyan
 
 # 1. Start MLflow Server
@@ -16,9 +16,10 @@ Write-Host "[3/3] Starting React Liquid Glass Frontend on http://localhost:5173.
 Start-Process -FilePath "powershell.exe" -ArgumentList "-NoExit", "-Command", "cd frontend; npm run dev"
 
 Write-Host "==========================================================" -ForegroundColor Green
-Write-Host "All NewsLens AI services have been initiated!" -ForegroundColor Green
+Write-Host "All New Topics Classification System services are online!" -ForegroundColor Green
 Write-Host "Frontend:  http://localhost:5173" -ForegroundColor White
 Write-Host "Backend:   http://localhost:8000" -ForegroundColor White
 Write-Host "Swagger:   http://localhost:8000/docs" -ForegroundColor White
 Write-Host "MLflow:    http://localhost:5000" -ForegroundColor White
 Write-Host "==========================================================" -ForegroundColor Green
+

@@ -29,7 +29,8 @@ export const Header: React.FC<HeaderProps> = ({
   apiHealthy,
   dvcVersion = 'v1.2.0',
 }) => {
-  const meta = TAB_TITLES[currentTab] || { title: 'NewsLens AI', subtitle: 'Continuous Learning Platform' };
+  const meta = TAB_TITLES[currentTab] || { title: 'New Topics Classification System', subtitle: 'Continuous Learning Platform' };
+
 
   return (
     <header className="glass-panel sticky top-0 z-30 px-6 py-4 border-b border-white/10 flex items-center justify-between gap-4">

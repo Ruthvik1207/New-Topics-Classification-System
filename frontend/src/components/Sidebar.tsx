@@ -66,13 +66,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </span>
             </div>
             <div>
-              <h1 className="text-lg font-black tracking-tight text-white flex items-center gap-1.5">
-                NewsLens <span className="text-cyan-400 font-light">AI</span>
+              <h1 className="text-base font-black tracking-tight text-white leading-tight">
+                New Topics <span className="text-cyan-400 font-semibold block text-xs tracking-wider">Classification System</span>
               </h1>
-              <p className="text-[10px] uppercase font-semibold tracking-wider text-slate-400">
+              <p className="text-[10px] uppercase font-semibold tracking-wider text-slate-400 mt-0.5">
                 Continuous Learning NLP
               </p>
             </div>
+
           </div>
 
           {/* Navigation links */}

@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    container_name: newslens-backend
+    container_name: topics-classifier-backend
     ports:
       - "8000:8000"
     environment:
@@ -28,25 +28,25 @@ services:
     depends_on:
       - mlflow
     networks:
-      - newslens-network
+      - topics-network
     restart: unless-stopped
 
   frontend:
     build:
       context: .
       dockerfile: frontend/Dockerfile
-    container_name: newslens-frontend
+    container_name: topics-classifier-frontend
     ports:
       - "5173:5173"
     depends_on:
       - backend
     networks:
-      - newslens-network
+      - topics-network
     restart: unless-stopped
 
   mlflow:
     image: ghcr.io/mlflow/mlflow:latest
-    container_name: newslens-mlflow
+    container_name: topics-classifier-mlflow
     ports:
       - "5000:5000"
     volumes:
@@ -54,12 +54,13 @@ services:
       - ./mlruns:/mlflow/mlruns
     command: mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts --host 0.0.0.0 --port 5000
     networks:
-      - newslens-network
+      - topics-network
     restart: unless-stopped
 
 networks:
-  newslens-network:
+  topics-network:
     driver: bridge
 
 volumes:
   mlflow_data:
+

@@ -3,8 +3,9 @@ from typing import List
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    APP_NAME: str = "NewsLens AI — Continuous Learning News Topic Classification"
+    APP_NAME: str = "New Topics Classification System"
     APP_ENV: str = os.getenv("APP_ENV", "development")
+
     API_PORT: int = int(os.getenv("API_PORT", 8000))
     FRONTEND_URL: str = os.getenv("FRONTEND_URL", "http://localhost:5173")
     

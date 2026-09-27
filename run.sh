@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# NewsLens AI - Service Launcher for Linux / macOS
+# New Topics Classification System - Service Launcher for Linux / macOS
 echo "=========================================================="
-echo " NewsLens AI - Continuous Learning NLP System Launcher   "
+echo " New Topics Classification System - Service Launcher      "
 echo "=========================================================="
 
 source .venv/bin/activate 2>/dev/null || true
@@ -19,10 +19,11 @@ echo "[3/3] Starting React Vite Frontend on http://localhost:5173..."
 cd frontend && npm run dev &
 
 echo "=========================================================="
-echo "All NewsLens AI services running in background!"
+echo "All New Topics Classification System services are online!"
 echo "Frontend:  http://localhost:5173"
 echo "Backend:   http://localhost:8000"
 echo "Swagger:   http://localhost:8000/docs"
 echo "MLflow:    http://localhost:5000"
 echo "=========================================================="
+
 wait

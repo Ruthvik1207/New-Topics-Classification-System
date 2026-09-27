@@ -24,12 +24,13 @@ const ENDPOINTS: EndpointDoc[] = [
     description: 'Check service availability, model loading state, and active version',
     responseExample: `{
   "status": "healthy",
-  "service": "NewsLens AI — Continuous Learning News Topic Classification",
+  "service": "New Topics Classification System",
   "model_loaded": true,
   "model_version": "v1.0",
   "model_type": "DEMO MODEL",
   "environment": "development"
 }`,
+
     curlExample: 'curl -X GET http://localhost:8000/api/v1/health',
   },
   {

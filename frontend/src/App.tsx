@@ -74,9 +74,10 @@ export function App() {
         {/* Global Footer */}
         <footer className="glass-panel border-t border-white/5 py-4 px-6 text-center text-xs text-slate-500 mt-auto">
           <p>
-            NewsLens AI — Continuous Learning News Topic Classification System • React + FastAPI + DistilBERT + DVC + MLflow + Evidently AI
+            New Topics Classification System — Continuous Learning NLP Platform • React + FastAPI + DistilBERT + DVC + MLflow + Evidently AI
           </p>
         </footer>
+
       </div>
     </div>
   );
