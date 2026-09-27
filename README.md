@@ -1,6 +1,7 @@
 # New Topics Classification System — Continuous Learning NLP Platform
 
-[![CI/CD Pipeline](https://github.com/topics-ai/new-topics-classification-system/actions/workflows/ci.yml/badge.svg)](https://github.com/topics-ai/new-topics-classification-system/actions)
+[![CI/CD Pipeline](https://github.com/Ruthvik1207/New-Topics-Classification-System/actions/workflows/ci.yml/badge.svg)](https://github.com/Ruthvik1207/New-Topics-Classification-System/actions)
+
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react&logoColor=black)](https://react.dev)
 [![DVC](https://img.shields.io/badge/DVC-Tracked-945DD6?logo=dvc&logoColor=white)](https://dvc.org)
