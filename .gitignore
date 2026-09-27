@@ -1,0 +1,33 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# MLflow and Storage
+mlruns/
+mlflow_artifacts/
+*.db
+*.sqlite
+*.sqlite3
+
+# Models cache & large binary weights
+models/*.pt
+models/*.bin
+models/transformer/
+
+# Monitoring generated HTML reports
+monitoring/reports/*.html
+
+# OS
+.DS_Store
+Thumbs.db

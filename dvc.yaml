@@ -1,0 +1,34 @@
+stages:
+  prepare:
+    cmd: python scripts/prepare_data.py
+    deps:
+      - scripts/prepare_data.py
+    outs:
+      - data/raw/news.csv
+      - data/processed/train.csv
+      - data/processed/val.csv
+      - data/processed/test.csv
+      - data/reference/reference_dataset.csv
+
+  train:
+    cmd: python scripts/train.py
+    deps:
+      - scripts/train.py
+      - data/processed/train.csv
+      - data/processed/val.csv
+      - params.yaml
+    params:
+      - model
+      - training
+    outs:
+      - models/model_metadata.json
+
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+      - scripts/evaluate.py
+      - data/processed/test.csv
+      - models/model_metadata.json
+    metrics:
+      - models/metrics.json:
+          cache: false

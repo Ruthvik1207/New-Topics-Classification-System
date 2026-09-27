@@ -1,0 +1,42 @@
+model:
+  name: "distilbert-base-uncased"
+  architecture: "Transformer"
+  fallback_type: "tfidf_logistic"
+  max_length: 128
+  num_labels: 8
+  categories:
+    - "World"
+    - "Politics"
+    - "Business"
+    - "Technology"
+    - "Science"
+    - "Health"
+    - "Sports"
+    - "Entertainment"
+
+training:
+  epochs: 3
+  batch_size: 16
+  learning_rate: 3.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  eval_threshold_f1: 0.80
+  seed: 42
+
+data:
+  raw_path: "data/raw/news.csv"
+  train_path: "data/processed/train.csv"
+  val_path: "data/processed/val.csv"
+  test_path: "data/processed/test.csv"
+  reference_path: "data/reference/reference_dataset.csv"
+  version: "v1.2.0"
+
+monitoring:
+  p_value_threshold: 0.05
+  confidence_drift_threshold: 0.10
+  reports_dir: "monitoring/reports"
+
+mlflow:
+  experiment_name: "news-topic-classification"
+  model_name: "news-topic-classifier"
+  artifact_path: "mlflow_artifacts"

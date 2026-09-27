@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: newslens-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - API_PORT=8000
+      - FRONTEND_URL=http://localhost:5173
+      - DATABASE_URL=sqlite:///./news_classifier.db
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - MLFLOW_EXPERIMENT_NAME=news-topic-classification
+      - MLFLOW_MODEL_NAME=news-topic-classifier
+      - MODEL_VERSION=v1.0
+      - MODEL_PATH=./models
+      - EVAL_THRESHOLD_F1=0.80
+      - EVIDENTLY_REPORT_PATH=./monitoring/reports
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./monitoring/reports:/app/monitoring/reports
+      - ./news_classifier.db:/app/news_classifier.db
+    depends_on:
+      - mlflow
+    networks:
+      - newslens-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: newslens-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - newslens-network
+    restart: unless-stopped
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: newslens-mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_data:/mlflow
+      - ./mlruns:/mlflow/mlruns
+    command: mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts --host 0.0.0.0 --port 5000
+    networks:
+      - newslens-network
+    restart: unless-stopped
+
+networks:
+  newslens-network:
+    driver: bridge
+
+volumes:
+  mlflow_data:

@@ -1,0 +1,101 @@
+name: NewsLens AI CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  backend-test:
+    name: Backend Tests & Quality Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install flake8 pytest
+
+      - name: Lint with flake8
+        run: |
+          # Stop build if syntax errors or undefined names occur
+          flake8 backend/app scripts/ --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Warning level exit-zero
+          flake8 backend/app scripts/ --count --exit-zero --max-complexity=15 --max-line-length=127 --statistics
+
+      - name: Prepare dataset and train initial model
+        run: |
+          python scripts/prepare_data.py
+          python scripts/train.py --version v1.0
+          python scripts/evaluate.py
+          python monitoring/scripts/generate_drift_report.py
+
+      - name: Run pytest test suite
+        run: |
+          pytest backend/tests/ -v --junitxml=junit/test-results.xml
+
+  frontend-build:
+    name: Frontend Lint & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run frontend lint
+        run: |
+          cd frontend
+          npm run lint || true
+
+      - name: Build frontend production bundle
+        run: |
+          cd frontend
+          npm run build
+
+  docker-build:
+    name: Docker Build Validation
+    needs: [backend-test, frontend-build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Backend Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: backend/Dockerfile
+          push: false
+          tags: newslens-backend:test
+
+      - name: Build Frontend Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: frontend/Dockerfile
+          push: false
+          tags: newslens-frontend:test

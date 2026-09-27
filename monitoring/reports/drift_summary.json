@@ -1,0 +1,55 @@
+{
+  "status": "Healthy",
+  "timestamp": "2026-09-27T19:30:55.567955Z",
+  "reference_samples": 72,
+  "current_samples": 72,
+  "metrics": {
+    "text_length_p_value": 1.0,
+    "word_count_p_value": 1.0,
+    "confidence_drift_p_value": 1.0,
+    "category_drift_score": 0.0,
+    "average_confidence_reference": 0.8545,
+    "average_confidence_current": 0.8545
+  },
+  "feature_drift": {
+    "text_length": {
+      "drift_detected": false,
+      "score": 0.0
+    },
+    "word_count": {
+      "drift_detected": false,
+      "score": 0.0
+    },
+    "prediction_confidence": {
+      "drift_detected": false,
+      "score": 0.0
+    },
+    "category_distribution": {
+      "drift_detected": false,
+      "score": 0.0
+    }
+  },
+  "category_distributions": {
+    "reference": {
+      "Business": 0.125,
+      "Entertainment": 0.1944,
+      "Health": 0.1944,
+      "Politics": 0.1111,
+      "Science": 0.1528,
+      "Sports": 0.0694,
+      "Technology": 0.0833,
+      "World": 0.0694
+    },
+    "current": {
+      "Business": 0.125,
+      "Entertainment": 0.1944,
+      "Health": 0.1944,
+      "Politics": 0.1111,
+      "Science": 0.1528,
+      "Sports": 0.0694,
+      "Technology": 0.0833,
+      "World": 0.0694
+    }
+  },
+  "html_report_available": true
+}
